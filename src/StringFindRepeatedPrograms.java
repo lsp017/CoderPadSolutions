@@ -6,7 +6,8 @@ import java.util.Set;
 public class StringFindRepeatedPrograms {
 	public static void main(String[] args) {
 		
-		String str = "ToFindRepeatedNONRepaetedLastrepeataLAstNonRepeatedMostRepeatedk";
+		String str = "LastNonRepeatedCharacter";
+				//"ToFindRepeatedNONRepaetedLastrepeataLAstNonRepeatedMostRepeatedk";
 		
 		//FirstRepeated
 		FindFirstRepeated(str);
