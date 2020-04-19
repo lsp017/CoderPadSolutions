@@ -6,8 +6,7 @@ import java.util.Set;
 public class StringFindRepeatedPrograms {
 	public static void main(String[] args) {
 		
-		String str = "LastNonRepeatedCharacter";
-				//"ToFindRepeatedNONRepaetedLastrepeataLAstNonRepeatedMostRepeatedk";
+		String str = "tofindrepeatednonrepaetedLastrepeataLAstNonRepeatedMostRepeatedk";
 		
 		//FirstRepeated
 		FindFirstRepeated(str);
@@ -35,12 +34,20 @@ public class StringFindRepeatedPrograms {
 
 	private static void FindFirstNonRepeated(String str) {
 		// TODO Auto-generated method stub
-		for (int i = 0; i < str.length()-1; i++) {
-			if(str.charAt(i)!=str.charAt(i+1)) {
-				System.out.println("FirstNonRepeatedChacter is : " + str.charAt(i+1));
+		Map<Character,Integer> map = new HashMap<>();
+		for(char c : str.toCharArray()) {
+			if(map.containsKey(c)) 
+				map.put(c,map.get(c)+1);
+			else 
+				map.put(c, 1);
+			}
+		for (int i = 0; i<str.length(); i++) {
+			if(map.get(str.charAt(i))==1) {
+				System.out.println("FirstNonRepeatedChacter is : " + str.charAt(i));
 				break;
 			}
 		}
+
 		
 	}
 
@@ -58,6 +65,7 @@ public class StringFindRepeatedPrograms {
 	}
 
 	private static void FindLastNonRepeated(String str) {
+
 		Map<Character,Integer> map = new HashMap<>();
 		for(char c : str.toCharArray()) {
 			if(map.containsKey(c)) 
