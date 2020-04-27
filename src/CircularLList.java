@@ -1,6 +1,8 @@
 
 import java.util.Scanner;
 
+import javax.naming.LinkLoopException;
+
 /*
  Group of students sitting in circle and teacher wants to elect a new President,
  she will walk around the circle while singing song and where the song ends that particular student will be removed
@@ -18,32 +20,49 @@ import java.util.Scanner;
 */
 public class CircularLList {
     public static void main(String[] args){
-        Scanner sc =new Scanner(System.in);
-        System.out.println("enter no of students");
-        int size = sc.nextInt();
-        int i = sc.nextInt();
-        Linkedlist ll = new Linkedlist(i);
-        Linkedlist head = ll;
-        while(--size>0){
-            i = sc.nextInt();
-            ll.next = new Linkedlist(i);
-            ll=ll.next;
-        }
-        // joining circular linked list
-        ll.next=head;
-        Linkedlist curr,prev;
-        curr=head.next;
-        prev=head;
+    	int n =14;
+    	int k=2;
+    	survivour(n,k);
+    	
+		/*
+		 * Scanner sc =new Scanner(System.in);
+		 * System.out.println("enter no of students"); int size = sc.nextInt(); int i =
+		 * sc.nextInt(); Linkedlist ll = new Linkedlist(i); Linkedlist head = ll;
+		 * while(--size>0){ i = sc.nextInt(); ll.next = new Linkedlist(i); ll=ll.next; }
+		 * // joining circular linked list ll.next=head; Linkedlist curr,prev;
+		 * curr=head.next; prev=head;
+		 * 
+		 * while (head.next!=null){ System.out.println("Eliminated : "+ curr.data);
+		 * prev.next=curr.next; prev=curr.next; curr=prev.next; if(curr.next==prev.next)
+		 * break; } System.out.println("president will be : " +prev.data);
+		 */    }
 
-        while (head.next!=null){
-           System.out.println("Eliminated : "+ curr.data);
-            prev.next=curr.next;
-            prev=curr.next;
-            curr=prev.next;
-            if(curr.next==prev.next) break;
-        }
-        System.out.println("president will be : " +prev.data);
-    }
+	private static void survivour(int n, int k) {
+		// TODO Auto-generated method stub
+		Linkedlist ll =new Linkedlist(1);
+		Linkedlist prev = ll;
+		for (int i = 2; i <=n; i++) {
+			prev.next = new Linkedlist(i);
+			prev=prev.next;
+		}
+		
+		prev.next = ll;
+		
+		Linkedlist ptr1= ll, ptr2 = ll;
+		while(ptr1.next != ptr1) {
+			int count=1;
+			
+			while(count!=k) {
+				ptr2=ptr1;
+				ptr1=ptr1.next;
+				count++;
+			}
+			
+			ptr2.next = ptr1.next;
+			ptr1=ptr2.next;
+		}
+		System.out.println("last person: "+ ptr1.data);
+	}
 }
 
 class Linkedlist{
