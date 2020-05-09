@@ -51,14 +51,13 @@ public class CircularLList {
 		Linkedlist ptr1= ll, ptr2 = ll;
 		while(ptr1.next != ptr1) {
 			int count=1;
-			
+			ptr1=ptr2;			
 			while(count!=k) {
-				ptr2=ptr1;
-				ptr1=ptr1.next;
+				ptr2=ptr2.next;
 				count++;
 			}
 			
-			ptr2.next = ptr1.next;
+			ptr1.next = ptr2.next;
 			ptr1=ptr2.next;
 		}
 		System.out.println("last person: "+ ptr1.data);

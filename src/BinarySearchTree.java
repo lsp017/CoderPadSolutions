@@ -218,6 +218,10 @@ public class BinarySearchTree {
                 System.out.println();
         }
     }
+	private void MaxDepthBinaryTree(Node root) {
+	
+		
+	}    
 
 
     // Driver Program to test above functions
@@ -253,9 +257,18 @@ public class BinarySearchTree {
       //  tree.topView();
 
         tree.verticalOrder();
+        tree.MaxDepthBinaryTree();
     }
 
-    private void verticalOrder() {
+    private void MaxDepthBinaryTree() {
+		// TODO Auto-generated method stub
+    	MaxDepthBinaryTree(root);
+		
+	}
+
+
+
+	private void verticalOrder() {
         verticalOrder(root);
     }
 
